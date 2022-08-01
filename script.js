@@ -1,12 +1,24 @@
-const text = 'bread'
 
-const vowels = ['a', 'e', 'i', 'o', 'u']
-const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'w', 'v', 'x', 'y', 'z']
+
+
+
+
+
+
+
+
+
+
+const text = 'pimpek'
+
+const vowels = ['a', 'e', 'i', 'o', 'u','y']
+
 
 let vowelsCount = 0
 let consonantsCount = 0
 const vovelsArray = []
 const consonantsArray = []
+const array = []
 
 const vowelsCounter = text => {
 	for (const letter of text) {
@@ -20,16 +32,15 @@ const vowelsCounter = text => {
 		case 1:
 			return text
 		case 2:
+			case 2:
 			for (const letter of text) {
-				const firstSyllab = text.slice(0, text.indexOf(letter) + 2)
-				const secondSyllab = text.slice(text.indexOf(letter) + 2)
 				if (vowels.includes(letter)) {
-					return `${firstSyllab}|${secondSyllab}`
+						return `${text.slice(0, text.indexOf(letter) + 2)}|${text.slice(text.indexOf(letter) + 2)}`
+					}
 				}
 			}
 	}
-}
+	
 
 console.log(vowelsCounter(text))
 
-// text.indexOf(letter)+1
