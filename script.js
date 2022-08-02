@@ -1,46 +1,61 @@
+const input = document.querySelector('.input')
+const btn = document.querySelector('.btn')
+const error = document.querySelector('.error')
+const vowelsText = document.querySelector('.vowels')
+const consonantsText = document.querySelector('.consonants')
+const word = document.querySelector('.word')
 
-
-
-
-
-
-
-
-
-
-
-const text = 'pimpek'
-
-const vowels = ['a', 'e', 'i', 'o', 'u','y']
-
+const vowels = ['a', 'e', 'i', 'o', 'u', 'y']
 
 let vowelsCount = 0
 let consonantsCount = 0
 const vovelsArray = []
 const consonantsArray = []
-const array = []
 
-const vowelsCounter = text => {
-	for (const letter of text) {
+const counter = () => {
+	input.value
+
+	if (input.value == '') {
+		error.innerText = 'Please, enter the word'
+		clearText()
+		return
+	}
+	if (/\d/.test(input.value)) {
+		error.innerText = 'You must enter a word, not number'
+		clearText()
+		return
+	}
+	if(/\s/.test(input.value)){
+		error.innerText = 'Please, enter only one word'
+		clearText()
+		return
+	}
+
+	for (const letter of input.value) {
 		const numberOfLetters = vowels.includes(letter) ? vowelsCount++ : consonantsCount++
 		const pushLetters = vowels.includes(letter) ? vovelsArray.push(letter) : consonantsArray.push(letter)
+		error.innerText = ''
 	}
-	console.log(`Numbers of vowels =  ${vowelsCount} || ${vovelsArray.join(',')}`)
-	console.log(`Numbers of consonants = ${consonantsCount} || ${consonantsArray.join(',')}`)
+	word.innerHTML = input.value
+	vowelsText.innerText = `Numbers of vowels =  ${vowelsCount} || ${vovelsArray.join(',')}`
+	consonantsText.innerText = `Numbers of consonants = ${consonantsCount} || ${consonantsArray.join(',')}`
 
-	switch (vowelsCount) {
-		case 1:
-			return text
-		case 2:
-			case 2:
-			for (const letter of text) {
-				if (vowels.includes(letter)) {
-						return `${text.slice(0, text.indexOf(letter) + 2)}|${text.slice(text.indexOf(letter) + 2)}`
-					}
-				}
-			}
-	}
+	clear()
+}
+
+btn.addEventListener('click', counter)
+
+const clear = () => {
+	input.value = ''
+	vowelsCount = 0
+	consonantsCount = 0
+	vovelsArray.length = 0
+	consonantsArray.length = 0
 	
-
-console.log(vowelsCounter(text))
-
+}
+const clearText = () => {
+	input.value = ''
+	word.innerHTML = ''
+	vowelsText.innerHTML = ''
+	consonantsText.innerHTML = ''
+}
