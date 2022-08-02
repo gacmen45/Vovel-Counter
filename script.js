@@ -12,6 +12,13 @@ let consonantsCount = 0
 const vovelsArray = []
 const consonantsArray = []
 
+
+const checkKey = e => {
+	if (e.code === 'Enter'){
+		counter()
+	}
+}
+
 const counter = () => {
 	input.value
 
@@ -43,7 +50,6 @@ const counter = () => {
 	clear()
 }
 
-btn.addEventListener('click', counter)
 
 const clear = () => {
 	input.value = ''
@@ -59,3 +65,6 @@ const clearText = () => {
 	vowelsText.innerHTML = ''
 	consonantsText.innerHTML = ''
 }
+
+input.addEventListener('keyup',checkKey)
+btn.addEventListener('click', counter)
