@@ -9,7 +9,7 @@
   </a> 
   </div>
 
-# To Do App v2
+# Vovel Counter
 
 <div align="left">
   
